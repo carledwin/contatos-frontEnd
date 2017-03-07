@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="appListaTelefonica">
+<html ng-app="appContatos">
 <head>
 	<title>Parte 1</title>
 	<script type="text/javascript" src="lib/angular/angular-1.6.2.js"></script>
@@ -28,9 +28,10 @@
 </head>
 <body>
 	
-	<div class="jumbotron" ng-controller="listaTelefonicaCtrl">
+	<div class="jumbotron" ng-controller="contatosCtrl">
 		<h4 ng-bind="app"></h4>
 		<hr />
+		<button ng-click="carregarTodos()">Carregar Contatos</button>
 		<br />
 		
 		<table class="table table-striped">
@@ -41,6 +42,7 @@
 					<th></th>
 				</tr>
 				<tr ng-repeat="contato in contatos">
+					<td>{{contato.id}}</td>
 					<td>{{contato.nome}}</td>
 					<td>{{contato.telefone}}</td>
 					<td>{{contato.email}}</td>

@@ -1,10 +1,19 @@
-angular.module("appContatos").controller("contatosCtrl", function($scope){
+angular.module("appContatos").controller("contatosCtrl", function($scope, $http){
 			$scope.message='';
 			$scope.contato={};
 			$scope.show_lterar=false;
 			$scope.contatos = [];
 			$scope.app="Contatos";
 		
+			$scope.carregarTodos=function(){
+				$http({method:"GET", url:"http://localhost:8080/"})
+					.then(function(response){
+					$scope.contatos = response.data;
+					}, function(response){
+							console.log("Erro ao tentar carregar contatos.");
+						});
+			}
+			
 			$scope.adicionar=function(){
 				$scope.contatos.push($scope.contato);
 				$scope.contato={};
@@ -29,6 +38,5 @@ angular.module("appContatos").controller("contatosCtrl", function($scope){
 				$scope.message="Contato alterado com sucesso!";
 				$scope.show_lterar = false;
 			};
-
 			
 		});
