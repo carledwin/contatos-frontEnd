@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap.css" />
 	<style type="text/css">
 		.jumbotron{
-			width:400px;
+			width:800px;
 			text-align:center;
 			margin-top:20px;
 			margin-left:auto;
@@ -36,16 +36,19 @@
 		
 		<table class="table table-striped">
 				<tr>
+					<th>Código</th>
 					<th>Nome</th>
 					<th>Telefone</th>
 					<th>Email</th>
-					<th></th>
+					<th>Estado</th>
+					<th>Ações</th>
 				</tr>
 				<tr ng-repeat="contato in contatos">
 					<td>{{contato.id}}</td>
 					<td>{{contato.nome}}</td>
 					<td>{{contato.telefone}}</td>
 					<td>{{contato.email}}</td>
+					<td>{{contato.estado.descricao}}</td>
 					<td>
 						<button class="glyphicon glyphicon-pencil" ng-click="editar(contato)"></button>
 						<button class="glyphicon glyphicon-remove" ng-click="excluir(contato)"></button>
@@ -56,7 +59,10 @@
 		<hr />
 		<input type="text" ng-model="contato.nome" class="form-control" placeholder="Nome" />
 		<input type="text" ng-model="contato.telefone" class="form-control" placeholder="Telefone" />
-		<input type="text" ng-model="contato.email" class="form-control" placeholder="Email" />
+		<input type="email" ng-model="contato.email" class="form-control" placeholder="Email" />
+		<select class="form-control" ng-model="contato.estado" ng-options="estado.id as estado.descricao for estado in estados">
+			<option value="">Selecione um estado</option>
+		</select>
 		<button ng-click="adicionar()" ng-show="!show_lterar" class="btn btn-primary btn-block">Adiconar contato</button>
 		<button ng-click="alterar(contato)" ng-show="show_lterar" class="btn btn-primary btn-block">Alterar contato</button> 
 		<div class="alert alert-success" ng-show="message != ''" role="alert">{{message}}</div>

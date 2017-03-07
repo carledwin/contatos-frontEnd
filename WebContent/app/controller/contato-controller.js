@@ -4,15 +4,28 @@ angular.module("appContatos").controller("contatosCtrl", function($scope, $http)
 			$scope.show_lterar=false;
 			$scope.contatos = [];
 			$scope.app="Contatos";
-		
+			
 			$scope.carregarTodos=function(){
 				$http({method:"GET", url:"http://localhost:8080/"})
 					.then(function(response){
-					$scope.contatos = response.data;
-					}, function(response){
+						$scope.contatos = response.data;
+						}, 
+						  function(response){
 							console.log("Erro ao tentar carregar contatos.");
 						});
 			}
+			
+			 function carregarEstados(){
+					 		$http({method:"GET", url:"http://localhost:8080/estados"})
+					 			.then(function(response){
+					 					$scope.estados= response.data;
+					 					}
+					 				, function(response){
+					 					Console.log("Erro ao tentar carregar estados.");
+								});
+			};
+			
+			$scope.estados = carregarEstados();
 			
 			$scope.adicionar=function(){
 				$scope.contatos.push($scope.contato);
