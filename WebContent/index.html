@@ -31,7 +31,6 @@
 	<div class="jumbotron" ng-controller="contatosCtrl">
 		<h4 ng-bind="app"></h4>
 		<hr />
-		<button ng-click="carregarTodos()">Carregar Contatos</button>
 		<br />
 		
 		<table class="table table-striped">
@@ -41,6 +40,7 @@
 					<th>Telefone</th>
 					<th>Email</th>
 					<th>Estado</th>
+					<th>Operadora</th>
 					<th>Ações</th>
 				</tr>
 				<tr ng-repeat="contato in contatos">
@@ -49,6 +49,7 @@
 					<td>{{contato.telefone}}</td>
 					<td>{{contato.email}}</td>
 					<td>{{contato.estado.descricao}}</td>
+					<td>{{contato.operadora.descricao}}</td>
 					<td>
 						<button class="glyphicon glyphicon-pencil" ng-click="editar(contato)"></button>
 						<button class="glyphicon glyphicon-remove" ng-click="excluir(contato)"></button>
@@ -61,7 +62,10 @@
 		<input type="text" ng-model="contato.telefone" class="form-control" placeholder="Telefone" />
 		<input type="email" ng-model="contato.email" class="form-control" placeholder="Email" />
 		<select class="form-control" ng-model="contato.estado" ng-options="estado.id as estado.descricao for estado in estados">
-			<option value="">Selecione um estado</option>
+			<option value="">-- Selecione um estado --</option>
+		</select>
+		<select class="form-control" ng-model="contato.operadora" ng-options="operadora.id as operadora.descricao for operadora in operadoras">
+			<option value="">-- Selecione uma operadora --</option>
 		</select>
 		<button ng-click="adicionar()" ng-show="!show_lterar" class="btn btn-primary btn-block">Adiconar contato</button>
 		<button ng-click="alterar(contato)" ng-show="show_lterar" class="btn btn-primary btn-block">Alterar contato</button> 
