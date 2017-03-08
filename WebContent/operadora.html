@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="appContatos">
+<head>
+	<title>Parte 1</title>
+	<script type="text/javascript" src="lib/angular/angular-1.6.2.js"></script>
+	<script type="text/javascript" src="app/app.js"></script>
+	<script type="text/javascript" src="app/controller/operadora-controller.js"></script>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="app/app.css" />
+</head>
+<body>
+	
+	<div class="jumbotron" ng-controller="operadoraCtrl">
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">
+	      </a>
+	      <ul class="nav nav-pills">
+			<li role="presentation" class="active"><a href="index.html">Home</a></li>
+			<li role="presentation"><a href="estado.html">Estados</a></li>
+			<li role="presentation"><a href="operadora.html">Operadoras</a></li>
+    	</ul>
+	    </div>
+	  </div>
+	</nav>
+		<h4 ng-bind="funcionalidade"></h4>
+		<hr />
+		<br />
+		
+		<table class="table table-striped">
+				<tr>
+					<th>Código</th>
+					<th>Descrição</th>
+					<th>Código Operadora</th>
+					<th>Ações</th>
+				</tr>
+				<tr ng-repeat="operadora in operadoras">
+					<td>{{operadora.id}}</td>
+					<td>{{operadora.descricao}}</td>
+					<td>{{operadora.codigo}}</td>
+					<td>
+						<button class="glyphicon glyphicon-pencil" ng-click="editar(operadora)"></button>
+						<button class="glyphicon glyphicon-remove" ng-click="excluir(operadora)"></button>
+					</td>
+				</tr>
+		</table>
+
+		<hr />
+		<input type="text" ng-disabled="true" ng-model="operadora.id" class="form-control" placeholder="Código" />
+		<input type="text" ng-model="operadora.descricao" class="form-control" placeholder="Descrição" />
+		<input type="email" ng-model="operadora.codigo" class="form-control" placeholder="Código operadora" />
+		<button ng-click="adicionar()" ng-show="!show_lterar" class="btn btn-primary btn-block">Adiconar</button>
+		<button ng-click="alterar(operadora)" ng-show="show_lterar" class="btn btn-primary btn-block">Alterar</button> 
+		<div class="alert alert-success" ng-show="message != ''" role="alert">{{message}}</div>
+	</div>
+
+</body>
+</html>

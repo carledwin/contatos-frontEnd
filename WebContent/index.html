@@ -1,34 +1,29 @@
 <!DOCTYPE html>
 <html ng-app="appContatos">
 <head>
-	<title>Parte 1</title>
+	<title>Contatos</title>
 	<script type="text/javascript" src="lib/angular/angular-1.6.2.js"></script>
 	<script type="text/javascript" src="app/app.js"></script>
 	<script type="text/javascript" src="app/controller/contato-controller.js"></script>
-
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7-dist/css/bootstrap.css" />
-	<style type="text/css">
-		.jumbotron{
-			width:800px;
-			text-align:center;
-			margin-top:20px;
-			margin-left:auto;
-			margin-right:auto;
-		}
-
-		.table{
-			margin-top:20;
-		}
-
-		.form-control{
-
-		}
-
-	</style>
+	<link rel="stylesheet" type="text/css" href="app/app.css" />
 </head>
 <body>
 	
 	<div class="jumbotron" ng-controller="contatosCtrl">
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">
+	      </a>
+	      <ul class="nav nav-pills">
+			<li role="presentation" class="active"><a href="index.html">Home</a></li>
+			<li role="presentation"><a href="estado.html">Estados</a></li>
+			<li role="presentation"><a href="operadora.html">Operadoras</a></li>
+    	  </ul>
+	    </div>
+	  </div>
+	</nav>
 		<h4 ng-bind="app"></h4>
 		<hr />
 		<br />
@@ -67,8 +62,8 @@
 		<select class="form-control" ng-model="contato.operadora" ng-options="operadora.id as operadora.descricao for operadora in operadoras">
 			<option value="">-- Selecione uma operadora --</option>
 		</select>
-		<button ng-click="adicionar()" ng-show="!show_lterar" class="btn btn-primary btn-block">Adiconar contato</button>
-		<button ng-click="alterar(contato)" ng-show="show_lterar" class="btn btn-primary btn-block">Alterar contato</button> 
+		<button ng-click="adicionar()" ng-show="!show_lterar" class="btn btn-primary btn-block">Adiconar</button>
+		<button ng-click="alterar(contato)" ng-show="show_lterar" class="btn btn-primary btn-block">Alterar</button> 
 		<div class="alert alert-success" ng-show="message != ''" role="alert">{{message}}</div>
 	</div>
 

@@ -5,7 +5,7 @@ angular.module("appContatos").controller("contatosCtrl", function($scope, $http)
 			$scope.contatos =[];
 			$scope.operadoras=[];
 			$scope.estados=[];
-			$scope.app="Contatos";
+			$scope.funcionalidade="Contatos";
 			
 			function carregarContatos(){
 				$http({method:"GET", url:"http://localhost:8080/"})
